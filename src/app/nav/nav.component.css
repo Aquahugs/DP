@@ -1,0 +1,27 @@
+.nav-bar {
+	float: right;
+}
+
+ul { 
+list-style: none;
+
+
+}
+
+ul li {
+	text-align: right;
+	padding-top: 10%;
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	color:#131313;
+}
+
+#contact{
+	padding-top: 99%;
+}
+
+#logo{
+	padding-bottom: 80%;
+	margin-top: 85%;
+	float: right;
+}
