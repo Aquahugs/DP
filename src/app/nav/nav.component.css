@@ -1,9 +1,11 @@
 .nav-bar {
 	float: right;
+	
 }
 
 ul { 
 list-style: none;
+margin-top: 2%;
 
 
 }

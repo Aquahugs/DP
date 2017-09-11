@@ -1,10 +1,16 @@
 
 <nav class = "nav-bar">
-	<ul>
-		<a routerLink="app-landingpage"><img id = "logo" src="http://via.placeholder.com/50x50"></a>
-		<a href="https://designerspen.tumblr.com/"><li>INSPIRATION</li></a>
-		 <a routerLink="app-news"><li>News</li></a>
-		<li>About</li>
-		<li id = "contact">CONTACT</li>
+	<ul *ngIf="(user|async)?.uid">
+		<a routerLink="app-landingpage"><img id = "logo" [src]="logopath"></a>
+		<a href="https://designerspen.tumblr.com/"><li>Inspiration</li></a>
+		<a routerLink="app-news"><li>News</li></a>
+		<li>Shop</li>
+		<a routerLink="app-about"><li>About</li></a>
+		<li id = "contact">Contact</li>
 	</ul>
+
+	 <ul class="nav navbar-nav account">
+          <li *ngIf="!(user|async)?.uid"><a routerLink="/login">Log In</a></li>
+          <li *ngIf="(user|async)?.uid"><a href="#" (click)="logOut()">Log Out</a></li>
+     </ul>
 </nav>

@@ -1,4 +1,6 @@
-
+form {
+	background-color: red;
+}
 .carousel-control {
 	opacity: .2
 }
