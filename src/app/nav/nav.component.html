@@ -12,5 +12,6 @@
 	 <ul class="nav navbar-nav account">
           <li *ngIf="!(user|async)?.uid"><a routerLink="/login">Log In</a></li>
           <li *ngIf="(user|async)?.uid"><a href="#" (click)="logOut()">Log Out</a></li>
+          <!-- later on this is where you want to put there profile pic from firebaselistner -->
      </ul>
 </nav>

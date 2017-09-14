@@ -15,6 +15,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ImageDetailComponent } from './image-detail/image-detail.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
+import { SignupComponent } from './signup/signup.component';
+
 import { AuthenticationGuard } from './services/authenticationGuard.service';
 
 
@@ -28,7 +30,9 @@ export const router: Routes = [
 	{ path: 'gallery', component: GalleryComponent, canActivate: [AuthenticationGuard]},
 	{ path: 'upload', component: UploadComponent, canActivate: [AuthenticationGuard]},
 	{ path: 'image/:id', component: ImageDetailComponent, canActivate: [AuthenticationGuard]},
-	{ path: 'login', component: LoginComponent,}
+	{ path: 'login', component: LoginComponent,},
+	{path: 'signup', component: SignupComponent}
+]
 	
 
 
@@ -36,6 +40,6 @@ export const router: Routes = [
 	// { path:'app-hr', component: HrComponent},
 	// { path:'app-iphone8', component: Iphone8Component},
 	// { path:'app-duy', component: DuyComponent}				
-];
+
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

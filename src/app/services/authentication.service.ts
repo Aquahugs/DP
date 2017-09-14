@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user.model';
 
+
+
 @Injectable()
 export class AuthenticationService {
 
@@ -22,9 +24,15 @@ export class AuthenticationService {
   	return this.afAuth.auth.signOut();
   }
 
+
+
   authUser(){
   	return this.user;
   }
+
+  sUpFunc(email: string, password: string){
+    firebase.auth().createUserWithEmailAndPassword(email,password)
+   }
 
 
 }

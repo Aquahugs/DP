@@ -34,6 +34,7 @@ import { UploadComponent } from './upload/upload.component';
 
 import {router} from './app.router'
 import {routes} from './app.router';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -54,6 +55,7 @@ import {routes} from './app.router';
     ImageDetailComponent,
     LoginComponent,
     UploadComponent,
+    SignupComponent,
   
 
   ],
