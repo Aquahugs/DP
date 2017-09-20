@@ -5,6 +5,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -14,19 +15,30 @@ import * as firebase from 'firebase/app';
 })
 export class NavComponent implements OnInit {
   logopath: string;
-
+  userEmail: string;
   user: Observable<firebase.User>;
-  constructor(private authService: AuthenticationService, private router: Router) {
+  displayName:string
+  
+  constructor(private authService: AuthenticationService, private router: Router, private userSvc: UserService,) {
   	this.logopath = '/assets/images/nav/logobig.png'
+
 
    }
 
   ngOnInit() {
   	this.user = this.authService.authUser()
+    this.user.subscribe(user => {
+      if(user) { 
+        this.userEmail = user.displayName;
+      }
+    });
   }
+  
 
   logOut() {
   	this.authService.logout().then(onResolve => this.router.navigate['/']);
   }
-
 }
+
+
+

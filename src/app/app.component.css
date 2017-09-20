@@ -1,10 +1,12 @@
+.container{
+	margin-bottom: 0 !important;
+}
 .slider{
 	margin-top: 3.5%;
 	height: auto;
 	padding: 0;
 
 }
-
 
 .leftnav{
 	

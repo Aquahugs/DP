@@ -1,3 +1,30 @@
-<p>
-  upload works!
-</p>
+<div class="container">
+  <div *ngIf="upload">
+    <div class="progress">
+      <div class="progress-bar progress-bar-animated" 
+      [ngStyle]="{ 'width': upload?.progress + '%' }"></div>
+    </div>
+    Progress: {{upload?.progress}}% Complete
+  </div>
+  <div class = "col-xs-12">
+    <div class = "row top">
+      <h2 class="heading">Hang up your Work</h2>
+      <p>Oh nice you're actually going to share some stuff go out there and show them<br> what you got ! Be prepared for feed back critiq etc but hey dont take <br>it to heart little guy treat this like a learning experince and welcome to the <br>community my guy</p>
+      <img class = "img-responsive gif" [src] ="imagepath">
+    </div>
+    <form class = "form-inline">
+      <label for="name">Your Name</label>
+      <input type="name" class="form-control" id="name" placeholder="*Name">
+      <label for="name">Your Site</label>
+      <input type="url" class="form-control" id="site" placeholder="Not recquired">
+      <label for="Occupation">Occupation</label>
+      <input type="text" class="form-control" id="site" placeholder="ex:Exterior designer at Audi">
+    </form>
+    <label for="description">Description</label>
+      <textarea class="form-control" rows="5" id="description" placeholder="Describe your work (not required) "></textarea>
+    <input type="file" 
+    (change)="handleFiles($event)" multiple>
+    <button class="btn btn-primary btn-upld" 
+    (click)="uploadFiles()">Upload</button>
+  </div>
+</div>

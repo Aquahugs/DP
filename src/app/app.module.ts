@@ -5,12 +5,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { environment} from '../environments/environment'
+import{ AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { Upload } from './models/upload.model';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 // import { UploadService } from './upload.service';
-
+import {ImageFilterPipe} from './image/shared/filter.pipe'
+import { UserService } from './services/user.service';
 import { UploadService } from './services/upload.service';
 import { AuthenticationService } from './services/authentication.service';
 import { ImageService } from './services/image.service';
@@ -56,6 +59,7 @@ import { SignupComponent } from './signup/signup.component';
     LoginComponent,
     UploadComponent,
     SignupComponent,
+    ImageFilterPipe
   
 
   ],
@@ -66,13 +70,16 @@ import { SignupComponent } from './signup/signup.component';
     RouterModule.forRoot(router),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AlertModule.forRoot()
  
   ],
   providers: [AuthenticationGuard,
   AuthenticationService,
   ImageService,
-  UploadService],
+  UploadService,
+  UserService,
+  ImageFilterPipe],
   bootstrap: [AppComponent]
 
   

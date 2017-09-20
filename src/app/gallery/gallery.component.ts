@@ -1,7 +1,7 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import{ ImageService} from '../services/image.service'
-import { GalleryImage } from '../models/galleryImage.model'
-import {Observable } from 'rxjs/Observable';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { ImageService} from '../services/image.service';
+import {Observable} from 'rxjs/Observable';
+import { GalleryImage} from '../models/galleryImage.model'
 
 @Component({
   selector: 'app-gallery',
@@ -9,6 +9,11 @@ import {Observable } from 'rxjs/Observable';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit, OnChanges {
+	title = 'recent photos'
+	
+	@Input() filterBy?: string = 'all'
+
+
 	images: Observable<GalleryImage[]>;
 
   constructor(private imageService: ImageService) { }

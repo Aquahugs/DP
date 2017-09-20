@@ -13,22 +13,36 @@ export class LoginComponent {
   email: string;
   password: string;
   errorMsg: string;
+  photoURL:string;
   user: Observable<firebase.User> 
 
   constructor(private authService: AuthenticationService, private router: Router,private afAuth: AngularFireAuth ) 
   { this.user = this.afAuth.authState}
 
-  signIn() {
-    this.authService.login({ email: this.email, password: this.password })
-      .then(resolve => this.router.navigate(['app-landingpage']))
-      .catch(error => this.errorMsg = error.message);
-  }
+  
    loginGoogle() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(resolve => this.router.navigate(['app-landingpage']))
-      .catch(function (error){
-      alert('${error.message} Please try again')
-    })
+      .then(user => {
+      const current = firebase.database().ref('/users').child(user.uid);
+      current.once('user', function(snapshot) {
+          if(snapshot.exists()) {
+              snapshot.ref.update({
+                  name: user.displayName,
+                  email: user.email,
+                  photoURL: user.photoURL
+              });
+          } else {
+              snapshot.ref.set({
+                  name: user.displayName,
+                  email: user.email,
+                  photoURL: user.photoURL,
+               
+              });
+          }
+      })
+    });
+      
   }
   loginFacebook() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
@@ -38,6 +52,9 @@ export class LoginComponent {
     })
   }
 
-
-
+   signIn() {
+    this.authService.login({ email: this.email, password: this.password })
+      .then(resolve => this.router.navigate(['app-landingpage']))
+      .catch(error => this.errorMsg = error.message);
+  }
 }

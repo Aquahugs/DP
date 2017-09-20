@@ -13,14 +13,18 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 
 export class SignupComponent implements OnInit {
-	constructor(private authService:AuthenticationService, private router:Router) { }
+
+	imagepath: string;
+	displayName: string;
+	constructor(private authService:AuthenticationService, router: Router) {this.imagepath = '/assets/images/car2.gif' }
 	ngOnInit() {}
 	
 	onSup(form: NgForm) {
 		const email = form.value.email;
 		const password = form.value.password;
-		this.authService.sUpFunc(email,password);
-		(resolve => this.router.navigate(['app-landingpage']))
+		const displayName = form.value.displayName;
+		this.authService.sUpFunc(email,password,displayName);	
 	}
+
 }
 

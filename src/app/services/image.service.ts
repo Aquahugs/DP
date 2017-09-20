@@ -9,20 +9,22 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class ImageService {
-	private uid: string;
+  private uid: string;
 
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) { 
+    this.afAuth.authState.subscribe(auth => {
+      if (auth !== undefined && auth !== null) {
+        this.uid = auth.uid;
+      }
+    });
+  }
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
-  	this.afAuth.authState.subscribe(auth =>{
-  		if (auth !== undefined && auth !== null){
-  			this.uid = auth.uid;
-  		}
-  	});
-   }
+  getImages(): Observable<GalleryImage[]> {
+    return this.db.list('uploads');
+  }
 
-
-   getImages(): Observable<GalleryImage[]> {
-   	return this.db.list('uploads');
-   }
-
+  getImage(key: string) {
+    return firebase.database().ref('uploads/' + key).once('value')
+    .then((snap) => snap.val());
+  }
 }

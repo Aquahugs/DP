@@ -1,0 +1,37 @@
+.container{
+  box-shadow:#555 1px 2px 8px 1px;
+  background-color: #f8f8f8;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.btn-upld{
+	margin-bottom: 5%;
+}
+
+.heading{
+    font-size: 56px;
+	font-family: 'PTSans', sans-serif;
+	font-weight: bold;
+}
+.gif{
+	margin: 0;
+	border-style: solid;	
+}
+
+.top {
+	border-bottom: 1px solid #5f5f5f;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+button{
+  height: 60px;
+  margin-top: 20px;
+  width: 100%;
+}
+p{
+	float: right;
+	margin-right: 2%;
+	padding-top: 5%;
+}
+

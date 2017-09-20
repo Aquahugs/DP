@@ -22,6 +22,8 @@ import { AuthenticationGuard } from './services/authenticationGuard.service';
 
 
 export const router: Routes = [
+	
+	
 	{ path:'', redirectTo:'app-landingpage', pathMatch: 'full', canActivate: [AuthenticationGuard]},
 	{ path:'app-landingpage', component: LandingpageComponent, canActivate: [AuthenticationGuard]},
 	{ path:'app-news', component: NewsComponent, canActivate: [AuthenticationGuard]},

@@ -4,14 +4,16 @@
 		<a routerLink="app-landingpage"><img id = "logo" [src]="logopath"></a>
 		<a href="https://designerspen.tumblr.com/"><li>Inspiration</li></a>
 		<a routerLink="app-news"><li>News</li></a>
-		<li>Shop</li>
+		<a routerLink="gallery"><li>Wall</li></a>
 		<a routerLink="app-about"><li>About</li></a>
 		<li id = "contact">Contact</li>
+		<span id="userEmail" >Hello, {{user.displayName}}</span>
 	</ul>
 
-	 <ul class="nav navbar-nav account">
-          <li *ngIf="!(user|async)?.uid"><a routerLink="/login">Log In</a></li>
-          <li *ngIf="(user|async)?.uid"><a href="#" (click)="logOut()">Log Out</a></li>
-          <!-- later on this is where you want to put there profile pic from firebaselistner -->
+	 <ul >
+ 	  <li *ngIf="!(user|async)?.uid"><a routerLink="/login"><img id = "logo" [src]="logopath"></a></li>
+      <li *ngIf="!(user|async)?.uid"><a routerLink="/login">Log In</a></li>
+      <li *ngIf="(user|async)?.uid"><a href="#" (click)="logOut()">Log Out</a></li>
      </ul>
 </nav>
+

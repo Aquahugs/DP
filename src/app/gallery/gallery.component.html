@@ -1,10 +1,39 @@
 <div class="row">
-    <h2>Latest Photos</h2>
-    <ul id="thumbnailsList">
-        <li *ngFor="let image of images | async" class="img"> <!-- for loop of images --> 
-            <a [routerLink]="['/image', image.$key]">
-            <img src="{{image.url}}" class="tn">
-            </a>
-        </li>
-    </ul>
+    <h2>Travel Photos</h2>
+    <button class="btn btn-lg btn-info" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
+    <button class="btn btn-lg btn-info" [class.active]="filterBy==='boats'" (click)="filterBy='boats'">Exterior</button>
+    <button class="btn btn-lg btn-info" [class.active]="filterBy==='camping'" (click)="filterBy='camping'">Interior</button>
+    <button class="btn btn-lg btn-info" [class.active]="filterBy==='library'" (click)="filterBy='library'">Other</button>
+    <a routerLink="../upload"><button class="btn btn-lg btn-info" id = "postbutton" >Post</button></a>
+
+
+
+    <div class = "col-xs-12">
+        <div class = "row">
+            <div class = "col-xs-4">
+                <!-- <li *ngFor="let image of (visibleImages | imageFilter:filterBy)"> -->
+                <div *ngFor="let image of images | async" class="img">
+                    <a [routerLink]="['/image', image.$key]">
+                    <img src="{{image.url}}" class="tn img-responsive">
+                    </a>
+                </div>
+            </div>
+            <div class = "col-xs-4">
+                <!-- <li *ngFor="let image of (visibleImages | imageFilter:filterBy)"> -->
+                <div *ngFor="let image of images | async" class="img">
+                    <a [routerLink]="['/image', image.$key]">
+                    <img src="{{image.url}}" class="tn img-responsive">
+                    </a>
+                </div>
+            </div>
+            <div class = "col-xs-4">
+                <!-- <li *ngFor="let image of (visibleImages | imageFilter:filterBy)"> -->
+                <div *ngFor="let image of images | async" class="img">
+                    <a [routerLink]="['/image', image.$key]">
+                    <img src="{{image.url}}" class="tn img-responsive">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
